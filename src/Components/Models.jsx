@@ -29,7 +29,7 @@ export function DataTable() {
   React.useEffect(() => {
     const getData = async () => {
       axios
-        .get("https://run.mocky.io/v3/3e4cfcf4-890b-49be-a24c-12bd1183fa63")
+        .get("https://run.mocky.io/v3/666c1f2e-a4f9-43b9-b1a1-b1d643e766c1")
         .then((res) => {
           setRows(res.data.data);
           setLoading(false);
