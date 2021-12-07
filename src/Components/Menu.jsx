@@ -87,27 +87,24 @@ function IconMenu() {
     <MenuList>
       <MenuItem>
         <ListItemIcon>
-          {/* <ContentCut fontSize="small" /> */}
           <DoneIcon />
         </ListItemIcon>
         <ListItemText>Table</ListItemText>
-        <Typography variant="body2" color="text.secondary">
+        <ListItemIcon sx={{ ml: 3 }}>
           <TableChartIcon />
-        </Typography>
+        </ListItemIcon>
       </MenuItem>
       <MenuItem>
-        <ListItemIcon>{/* <ContentCopy fontSize="small" /> */}</ListItemIcon>
-        <ListItemText>Copy</ListItemText>
-        <Typography variant="body2" color="text.secondary">
-          {/* <ViewKanbanIcon /> */}
-        </Typography>
+        <ListItemIcon></ListItemIcon>
+        <ListItemText>Kan ban</ListItemText>
+        <ListItemIcon sx={{ ml: 3 }}>{/* <ViewKanbanIcon /> */}</ListItemIcon>
       </MenuItem>
       <MenuItem>
-        <ListItemIcon>{/* <ContentPaste fontSize="small" /> */}</ListItemIcon>
-        <ListItemText>Paste</ListItemText>
-        <Typography variant="body2" color="text.secondary">
+        <ListItemIcon></ListItemIcon>
+        <ListItemText>Split view</ListItemText>
+        <ListItemIcon sx={{ ml: 3 }}>
           <VerticalSplitIcon />
-        </Typography>
+        </ListItemIcon>
       </MenuItem>
       {/* <Divider />
       <MenuItem>
