@@ -11,11 +11,13 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import Customers from "../Components/Customers";
+import Models from "../Components/Models";
 
-const pages = ["Models", "Categories", "Sectors"];
+const pages = ["Models", "Customers"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-const NavBar = ({ setValue }) => {
+const NavBar = ({ setPage }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -36,7 +38,8 @@ const NavBar = ({ setValue }) => {
 
   const handleChange = (e) => {
     console.log(e);
-    setValue(pages.findIndex((value) => value == e));
+    if (e === "Customers") setPage(<Customers />);
+    else if (e === "Models") setPage(<Models />);
   };
 
   return (

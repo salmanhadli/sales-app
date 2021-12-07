@@ -1,0 +1,9 @@
+.buttonStack {
+  border: 0.5px blue solid;
+  border-radius: 5px;
+}
+
+.buttonStack > *:not(:last-child) {
+  border-right: 0.5px blue solid;
+  border-radius: 0;
+}
