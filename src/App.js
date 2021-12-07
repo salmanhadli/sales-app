@@ -5,8 +5,6 @@ import NavBar from "./Containers/NavBar";
 
 export default function App() {
   const [value, setValue] = React.useState(0);
-  console.log(value);
-
   return (
     <>
       <NavBar setValue={setValue} />
