@@ -19,16 +19,15 @@ import PeopleOutlineTwoToneIcon from "@mui/icons-material/PeopleOutlineTwoTone";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import "./Customers.css";
-import Search from "./Search";
-import BasicMenu from "./Menu";
+import Search from "../Components/Search";
+import BasicMenu from "../Components/Menu";
 import SettingsIcon from "@mui/icons-material/Settings";
 import TableRowsIcon from "@mui/icons-material/TableRows";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import CreateIcon from "@mui/icons-material/Create";
 import PieChartIcon from "@mui/icons-material/PieChart";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import DataTable from "./DataTable";
-import axios from "axios";
+import DataTable from "../Components/DataTable";
 
 const customersType = [
   "All Customers",
@@ -78,103 +77,9 @@ const customerColumns = [
 ];
 
 export default function SelectLabels() {
-  let customersData;
   const [type, setType] = React.useState(
     customersType.indexOf("Recently viewed (Pinned)")
   );
-
-  const [data, setData] = React.useState([]);
-
-  const getCustomerData = async () => {
-    await axios.get(customersDataUrl).then((res) => {
-      console.log(res.data);
-      setData(res.data);
-      return data;
-    });
-  };
-
-  // const getCustomerData = () => {
-  //   return [
-  //     {
-  //       id: 1,
-  //       Name: "Sal Man",
-  //       Phone: "",
-  //       Email: "salman@nomail.com",
-  //     },
-  //     {
-  //       id: 2,
-  //       Name: "Joss Whedon",
-  //       Phone: "",
-  //       Email: "josswhedon@nomail.com",
-  //     },
-  //     {
-  //       id: 3,
-  //       Name: "Henry Cavill",
-  //       Phone: "",
-  //       Email: "henrycavill@nomail.com",
-  //     },
-  //     {
-  //       id: 4,
-  //       Name: "Ben Affleck",
-  //       Phone: "",
-  //       Email: "benaffleck@nomail.com",
-  //     },
-  //     {
-  //       id: 5,
-  //       Name: "Gal Gadot",
-  //       Phone: "",
-  //       Email: "galgadot@nomail.com",
-  //     },
-  //     {
-  //       id: 6,
-  //       Name: "Ezra Miller",
-  //       Phone: "",
-  //       Email: "ezramiller@nomail.com",
-  //     },
-  //     {
-  //       id: 7,
-  //       Name: "Grant Gustin",
-  //       Phone: "",
-  //       Email: "grantgustin@nomail.com",
-  //     },
-  //     {
-  //       id: 8,
-  //       Name: "Jason Mamoa",
-  //       Phone: "",
-  //       Email: "jasonmamoa@nomail.com",
-  //     },
-  //     {
-  //       id: 9,
-  //       Name: "Zack Snyder",
-  //       Phone: "",
-  //       Email: "zacksnyder@nomail.com",
-  //     },
-  //     {
-  //       id: 10,
-  //       Name: "Louis Lane",
-  //       Phone: "",
-  //       Email: "louislane@nomail.com",
-  //     },
-  //     {
-  //       id: 11,
-  //       Name: "Clark Kent",
-  //       Phone: "",
-  //       Email: "clarkkent@nomail.com",
-  //     },
-  //     {
-  //       id: 12,
-  //       Name: "Bruce Wayne",
-  //       Phone: "",
-  //       Email: "brucewayne@nomail.com",
-  //     },
-  //     {
-  //       id: 13,
-  //       Name: "Barry Allen",
-  //       Phone: "",
-  //       Email: "barryallen@nomail.com",
-  //     },
-  //   ];
-  // };
 
   const handleChange = (event) => {
     setType(event.target.value);

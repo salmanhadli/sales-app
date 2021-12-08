@@ -4,7 +4,7 @@ export default () => {
   return (
     <Typography
       variant="p"
-      component="h4"
+      component="span"
       style={{
         border: "1px lightgrey solid",
         borderRadius: "50px",

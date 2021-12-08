@@ -42,7 +42,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default ({ gutter }) => {
+export default ({ gutter, alignRight }) => {
   return (
     <div
       style={{
@@ -50,7 +50,7 @@ export default ({ gutter }) => {
         margin: `${gutter ? "20px 30px 0 auto" : "none"}`,
       }}
     >
-      <div style={{ flex: "1" }}></div>
+      {alignRight && <div style={{ flex: "1" }}></div>}
       <Search style={{ border: "#64b5f6 1px solid", maxWidth: "300px" }}>
         <SearchIconWrapper>
           <SearchIcon />

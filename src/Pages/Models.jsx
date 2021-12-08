@@ -1,10 +1,9 @@
 import * as React from "react";
-import Loading from "./Loading";
-import DataTable from "./DataTable";
+import Loading from "../Components/Loading";
+import DataTable from "../Components/DataTable";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Menu from "../Components/Menu";
 import Search from "../Components/Search";
@@ -56,7 +55,7 @@ const ModelContainer = ({ value, handleChange }) => {
           />
         </Tabs>
       </Box>
-      <Search gutter={true} />
+      <Search gutter={true} alignRight={true} />
       <TotalRecords />
       <TabPanel value={value} index={0}>
         <DataTable rowsDataUrl={modelDataUrl} columns={modelDataColumns} />
@@ -82,11 +81,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 }

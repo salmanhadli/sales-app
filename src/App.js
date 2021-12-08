@@ -2,7 +2,7 @@ import * as React from "react";
 import "./App.css";
 import Content from "./Containers/Content";
 import NavBar from "./Containers/NavBar";
-import Models from "./Components/Models";
+import Models from "./Pages/Models";
 
 
 export default function App() {

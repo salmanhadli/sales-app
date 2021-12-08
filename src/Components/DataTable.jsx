@@ -2,19 +2,6 @@ import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
 import Loading from "./Loading";
-// import TableContainer from "@mui/material/TableContainer";
-// import Paper from "@mui/material/Paper";
-
-let defaultColumns = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "name", headerName: "Name", width: 800 },
-  { field: "active", headerName: "Active", width: 130 },
-  {
-    field: "noa",
-    headerName: "Number of Accounts",
-    width: 180,
-  },
-];
 
 export default function DataTable({ rowsDataUrl, columns }) {
   const [rows, setRows] = React.useState([]);
@@ -32,7 +19,7 @@ export default function DataTable({ rowsDataUrl, columns }) {
     };
 
     getData();
-  }, []);
+  }, [rowsDataUrl]);
 
   if (loading) {
     return (
