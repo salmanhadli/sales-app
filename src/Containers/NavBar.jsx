@@ -13,8 +13,9 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Customers from "../Components/Customers";
 import Models from "../Components/Models";
+import Rebalancer from "../Components/Rebalancer";
 
-const pages = ["Models", "Customers"];
+const pages = ["Models", "Customers", "Rebalancer"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const NavBar = ({ setPage }) => {
@@ -40,6 +41,7 @@ const NavBar = ({ setPage }) => {
     console.log(e);
     if (e === "Customers") setPage(<Customers />);
     else if (e === "Models") setPage(<Models />);
+    else if (e === "Rebalancer") setPage(<Rebalancer />);
   };
 
   return (
