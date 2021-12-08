@@ -7,3 +7,13 @@
   border-right: 0.5px blue solid;
   border-radius: 0;
 }
+
+.iconStack {
+  border: 0.5px lightgray solid;
+  border-radius: 5px;
+}
+
+.iconStack > *:not(:last-child) {
+  border-right: 0.5px lightgray solid;
+  border-radius: 0;
+}

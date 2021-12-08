@@ -11,6 +11,20 @@ import Search from "../Components/Search";
 import TotalRecords from "../Components/TotalRecords";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
+const modelDataUrl =
+  "https://run.mocky.io/v3/666c1f2e-a4f9-43b9-b1a1-b1d643e766c1";
+
+const modelDataColumns = [
+  { field: "id", headerName: "ID", width: 70 },
+  { field: "name", headerName: "Name", width: 800 },
+  { field: "active", headerName: "Active", width: 130 },
+  {
+    field: "noa",
+    headerName: "Number of Accounts",
+    width: 180,
+  },
+];
+
 export default () => {
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -25,7 +39,7 @@ export default () => {
 
 const ModelContainer = ({ value, handleChange }) => {
   return (
-    <>
+    <Box sx={{ height: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={value}
@@ -45,15 +59,15 @@ const ModelContainer = ({ value, handleChange }) => {
       <Search gutter={true} />
       <TotalRecords />
       <TabPanel value={value} index={0}>
-        <DataTable />
+        <DataTable rowsDataUrl={modelDataUrl} columns={modelDataColumns} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <DataTable />
+        <DataTable rowsDataUrl={modelDataUrl} columns={modelDataColumns} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <DataTable />
+        <DataTable rowsDataUrl={modelDataUrl} columns={modelDataColumns} />
       </TabPanel>
-    </>
+    </Box>
   );
 };
 

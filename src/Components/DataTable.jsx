@@ -1,12 +1,13 @@
+import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
 import Loading from "./Loading";
-import * as React from "react";
+// import TableContainer from "@mui/material/TableContainer";
+// import Paper from "@mui/material/Paper";
 
-
-const columns = [
+let defaultColumns = [
   { field: "id", headerName: "ID", width: 70 },
-  { field: "name", headerName: "Name", width: 500 },
+  { field: "name", headerName: "Name", width: 800 },
   { field: "active", headerName: "Active", width: 130 },
   {
     field: "noa",
@@ -15,18 +16,19 @@ const columns = [
   },
 ];
 
-export default function DataTable() {
+export default function DataTable({ rowsDataUrl, columns }) {
   const [rows, setRows] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     const getData = async () => {
-      axios
-        .get("https://run.mocky.io/v3/666c1f2e-a4f9-43b9-b1a1-b1d643e766c1")
-        .then((res) => {
-          setRows(res.data.data);
-          setLoading(false);
-        });
+      axios.get(rowsDataUrl).then((res) => {
+        // console.log(res.data);
+        if (!res.data.data) {
+          setRows(res.data);
+        } else setRows(res.data.data);
+        setLoading(false);
+      });
     };
 
     getData();
