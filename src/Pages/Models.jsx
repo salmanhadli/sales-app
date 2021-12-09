@@ -37,6 +37,7 @@ export default () => {
 };
 
 const ModelContainer = ({ value, handleChange }) => {
+  const [totalRecords, setTotalRecords] = React.useState(0);
   return (
     <Box sx={{ height: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -56,15 +57,27 @@ const ModelContainer = ({ value, handleChange }) => {
         </Tabs>
       </Box>
       <Search gutter={true} alignRight={true} />
-      <TotalRecords />
+      <TotalRecords margin={"0 0 0 20px"} value={totalRecords} />
       <TabPanel value={value} index={0}>
-        <DataTable rowsDataUrl={modelDataUrl} columns={modelDataColumns} />
+        <DataTable
+          rowsDataUrl={modelDataUrl}
+          columns={modelDataColumns}
+          setTotalRecords={setTotalRecords}
+        />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <DataTable rowsDataUrl={modelDataUrl} columns={modelDataColumns} />
+        <DataTable
+          rowsDataUrl={modelDataUrl}
+          columns={modelDataColumns}
+          setTotalRecords={setTotalRecords}
+        />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <DataTable rowsDataUrl={modelDataUrl} columns={modelDataColumns} />
+        <DataTable
+          rowsDataUrl={modelDataUrl}
+          columns={modelDataColumns}
+          setTotalRecords={setTotalRecords}
+        />
       </TabPanel>
     </Box>
   );
@@ -81,7 +94,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box sx={{ p: 2 }}>{children}</Box>}
     </div>
   );
 }

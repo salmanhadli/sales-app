@@ -10,7 +10,7 @@ export default function Content({ children }) {
           margin: "20px auto",
           backgroundColor: "white",
           borderRadius: "8px",
-          height: "85vh",
+          minHeight: "83vh",
         }}
       >
         {children}

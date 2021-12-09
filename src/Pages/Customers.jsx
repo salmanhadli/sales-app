@@ -176,8 +176,12 @@ export default function SelectLabels() {
           </Button>
         </Stack>
       </div>
-      <div style={{ padding: "24px" }}>
-        <DataTable rowsDataUrl={customersDataUrl} columns={customerColumns} />
+      <div style={{ padding: "20px" }}>
+        <DataTable
+          rowsDataUrl={customersDataUrl}
+          columns={customerColumns}
+          setTotalRecords={() => {}}
+        />
       </div>
     </div>
   );
