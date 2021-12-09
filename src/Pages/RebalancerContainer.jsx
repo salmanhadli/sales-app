@@ -30,7 +30,7 @@ export default function RebalancerContainer() {
         <Rebalance />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Spend Cash
+        <Rebalance />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Raise Cash
