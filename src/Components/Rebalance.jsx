@@ -7,6 +7,7 @@ import "./Rebalance.css";
 import { Typography } from "@mui/material";
 import TotalRecords from "./TotalRecords";
 import DataTable from "./DataTable";
+import BusinessIcon from "@mui/icons-material/Business";
 
 const RebalanceOptions = ["Account", "Model"];
 
@@ -24,7 +25,7 @@ export default function Rebalance() {
         }}
       >
         <RadioInputs options={RebalanceOptions} setOption={setOption} />
-        <Search />
+        <Search iconLabel={<BusinessIcon />} />
         <div style={{ flex: "1 0 10%" }}></div>
         <TextareaAutosize
           aria-label="minimum height"
