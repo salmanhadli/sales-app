@@ -24,12 +24,19 @@ export default ({ options, setOption }) => {
           value={choice ?? ""}
           onChange={choiceSelectHandler}
         >
-          <FormControlLabel
+          {/* <FormControlLabel
             value="Account"
             control={<Radio />}
             label="Account"
           />
-          <FormControlLabel value="Model" control={<Radio />} label="Model" />
+          <FormControlLabel value="Model" control={<Radio />} label="Model" /> */}
+          {options.map((option, index) => (
+            <FormControlLabel
+              value={option}
+              control={<Radio />}
+              label={option}
+            />
+          ))}
         </RadioGroup>
       </FormControl>
     </FormGroup>
