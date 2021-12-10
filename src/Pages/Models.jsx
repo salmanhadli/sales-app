@@ -57,7 +57,7 @@ const ModelContainer = ({ value, handleChange }) => {
         </Tabs>
       </Box>
       <Search gutter={true} alignRight={true} />
-      <TotalRecords margin={"0 0 0 20px"} value={totalRecords} />
+      <TotalRecords margin="0 0 0 20px" value={totalRecords} />
       <TabPanel value={value} index={0}>
         <DataTable
           rowsDataUrl={modelDataUrl}

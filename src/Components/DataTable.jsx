@@ -3,7 +3,12 @@ import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
 import Stack from "@mui/material/Stack";
 
-export default function DataTable({ rowsDataUrl, columns, setTotalRecords }) {
+export default function DataTable({
+  rowsDataUrl,
+  columns,
+  setTotalRecords,
+  noCheckBox,
+}) {
   const [rows, setRows] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
@@ -34,7 +39,8 @@ export default function DataTable({ rowsDataUrl, columns, setTotalRecords }) {
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
-        checkboxSelection
+        // checkboxSelection={noCheckBox === true ? false : true}
+        checkboxSelection={!!!noCheckBox}
         loading={loading}
         // components={{
         //   NoRowsOverlay: () => (

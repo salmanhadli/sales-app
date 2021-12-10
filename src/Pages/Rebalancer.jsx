@@ -4,8 +4,9 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import Rebalance from "../Components/Rebalance";
+import RebalancerContainer from "../Containers/RebalancerContainer";
 
-export default function RebalancerContainer() {
+export default function Rebalancer() {
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -27,13 +28,13 @@ export default function RebalancerContainer() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Rebalance />
+        <RebalancerContainer subTab="Rebalance" />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Rebalance />
+        <RebalancerContainer subTab="Spend Cash" />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Raise Cash
+        <RebalancerContainer subTab="Raise Cash" />
       </TabPanel>
       <TabPanel value={value} index={3}>
         Analyzer
