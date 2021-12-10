@@ -31,7 +31,7 @@ export default function RebalancerContainer({ subTab }) {
         )}
 
         <Search
-          iconLabel={<BusinessIcon />}
+          iconLabel={<BusinessIcon sx={{ color: "blue" }} />}
           textLabel={tab !== "Rebalance" && "Select Account"}
         />
 
