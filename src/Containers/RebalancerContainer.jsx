@@ -82,7 +82,10 @@ export default function RebalancerContainer({ subTab }) {
 
       {tab === "Analyzer" && (
         <div style={{ margin: "10px 22px", width: "240px" }}>
-          <SelectInputs label="Level" options={["Security"]} />
+          <SelectInputs
+            label="Level"
+            options={["Security", "Sector", "Category"]}
+          />
         </div>
       )}
 
