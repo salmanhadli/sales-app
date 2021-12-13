@@ -37,7 +37,7 @@ export default function Rebalancer() {
         <RebalancerContainer subTab="Raise Cash" />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Analyzer
+        <RebalancerContainer subTab="Analyzer" />
       </TabPanel>
       <TabPanel value={value} index={4}>
         Proposed Table

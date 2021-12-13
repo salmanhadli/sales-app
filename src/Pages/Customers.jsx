@@ -123,7 +123,7 @@ export default function SelectLabels() {
             </FormControl>
           </div>
         </div>
-        <BasicButtons />
+        <BasicButtons buttons={buttonStack} />
       </div>
       <div
         style={{
@@ -187,10 +187,10 @@ export default function SelectLabels() {
   );
 }
 
-function BasicButtons() {
+export function BasicButtons({ buttons }) {
   return (
     <Stack spacing={0} direction="row" className="buttonStack" sx={{ mr: 2 }}>
-      {buttonStack.map((label, index) => (
+      {buttons.map((label, index) => (
         <Button variant="text" key={label + " " + index}>
           {label}
         </Button>

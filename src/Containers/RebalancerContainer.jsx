@@ -8,6 +8,7 @@ import { Typography } from "@mui/material";
 import TotalRecords from "../Components/TotalRecords";
 import DataTable from "../Components/DataTable";
 import BusinessIcon from "@mui/icons-material/Business";
+import { BasicButtons } from "../Pages/Customers";
 
 const RebalanceOptions = ["Account", "Model"];
 
@@ -17,6 +18,19 @@ export default function RebalancerContainer({ subTab }) {
   const [totalRecords, setTotalRecords] = React.useState("0");
   return (
     <div>
+      {tab === "Analyzer" && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "10px",
+          }}
+        >
+          <BasicButtons buttons={["Analyze", "Proposed Trade"]} />
+        </div>
+      )}
+
       <div
         style={{
           display: "flex",
@@ -34,19 +48,20 @@ export default function RebalancerContainer({ subTab }) {
           iconLabel={<BusinessIcon sx={{ color: "blue" }} />}
           textLabel={tab !== "Rebalance" && "Select Account"}
         />
-
-        <TextareaAutosize
-          aria-label="minimum height"
-          minRows={3}
-          placeholder="Trade Notes"
-          style={{
-            width: 300,
-            height: 70,
-            fontSize: "20px",
-            margin: "10px 0",
-            marginLeft: "auto",
-          }}
-        />
+        {tab === "Analyzer" ?? (
+          <TextareaAutosize
+            aria-label="minimum height"
+            minRows={3}
+            placeholder="Trade Notes"
+            style={{
+              width: 300,
+              height: 70,
+              fontSize: "20px",
+              margin: "10px 0",
+              marginLeft: "auto",
+            }}
+          />
+        )}
       </div>
       {tab === "Rebalance" && (
         <div style={{ display: "flex" }} className="selectStack">
@@ -62,6 +77,12 @@ export default function RebalancerContainer({ subTab }) {
             label="Level"
             options={["Security", "Sector", "Category"]}
           />
+        </div>
+      )}
+
+      {tab === "Analyzer" && (
+        <div style={{ margin: "10px 22px", width: "240px" }}>
+          <SelectInputs label="Level" options={["Security"]} />
         </div>
       )}
 
@@ -82,7 +103,7 @@ export default function RebalancerContainer({ subTab }) {
           {tab === "Rebalance" ? option : "Account"}
         </Typography>
 
-        <Search />
+        {tab === "Analyzer" ?? <Search />}
       </div>
 
       <TotalRecords margin={"10px"} value={totalRecords} />
@@ -120,6 +141,33 @@ export default function RebalancerContainer({ subTab }) {
           setTotalRecords={setTotalRecords}
           noCheckBox={true}
         />
+      )}
+
+      {tab === "Analyzer" && (
+        <>
+          <DataTable
+            rowsDataUrl={""}
+            columns={analyzerAccountsColumns}
+            setTotalRecords={setTotalRecords}
+            noCheckBox={true}
+          />
+          <Typography
+            variant="h3"
+            component="div"
+            sx={{
+              fontSize: "18px",
+              fontWeight: "600",
+              margin: "30px 20px 0 20px",
+            }}
+          >
+            Securities
+          </Typography>
+          <DataTable
+            rowsDataUrl={""}
+            columns={analyzerSecuritiesColumns}
+            setTotalRecords={setTotalRecords}
+          />
+        </>
       )}
     </div>
   );
@@ -203,4 +251,81 @@ const raiseCashColumns = [
   },
   { field: "current value", headerName: "CURRENT VALUE $", flex: 1 },
   { field: "amount to be raised", headerName: "AMOUNT TO BE RAISED", flex: 1 },
+];
+
+const analyzerAccountsColumns = [
+  {
+    field: "account name",
+    headerName: "ACCOUNT NAME",
+    flex: 1,
+  },
+  {
+    field: "account value",
+    headerName: "ACCOUNT VALUE",
+    flex: 1,
+  },
+  {
+    field: "model name",
+    headerName: "MODEL NAME",
+    flex: 1,
+  },
+];
+
+const analyzerSecuritiesColumns = [
+  {
+    field: "name",
+    headerName: "NAME",
+    flex: 1,
+  },
+  {
+    field: "target percentage",
+    headerName: "TARGET %",
+    flex: 1,
+  },
+  {
+    field: "lt percentage",
+    headerName: "LT %",
+    flex: 1,
+  },
+
+  {
+    field: "ut percentage",
+    headerName: "UT %",
+    flex: 1,
+  },
+  {
+    field: "target amount",
+    headerName: "TARGET $",
+    flex: 1,
+  },
+  {
+    field: "current percentage",
+    headerName: "CURRENT %",
+    flex: 1,
+  },
+  {
+    field: "current amount",
+    headerName: "CURRENT $",
+    flex: 1,
+  },
+  {
+    field: "out",
+    headerName: "OUT",
+    flex: 1,
+  },
+  {
+    field: "post trade percentage",
+    headerName: "POST TRADE %",
+    flex: 1,
+  },
+  {
+    field: "post trade amount",
+    headerName: "POST TRADE $",
+    flex: 1,
+  },
+  {
+    field: "out final",
+    headerName: "OUT",
+    flex: 1,
+  },
 ];
