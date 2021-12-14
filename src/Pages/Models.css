@@ -1,13 +1,24 @@
 .tab-enter {
-  opacity: 0.2;
+  opacity: 0;
+  height: 0;
   transform: translateX(400px);
 }
 
+.tab-enter-reverse {
+  opacity: 0;
+  height: 0;
+  transform: translateX(-400px);
+}
+
 .tab-enter-active {
-  transition-delay: 200ms;
   opacity: 1;
   transform: translateX(0);
   transition: opacity 500ms, transform 500ms;
+  transition-delay: 300ms;
+}
+
+.tab-enter-done {
+  height: 100%;
 }
 
 .tab-exit {
@@ -15,6 +26,14 @@
 }
 .tab-exit-active {
   opacity: 0;
+  height: 0;
   transform: translateX(-400px);
-  transition: opacity 200ms, transform 200ms;
+  transition: opacity 300ms, transform 300ms;
+}
+
+.tab-exit-active-reverse {
+  opacity: 0;
+  height: 0;
+  transform: translateX(400px);
+  transition: opacity 300ms, transform 300ms;
 }

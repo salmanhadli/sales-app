@@ -27,13 +27,21 @@ const modelDataColumns = [
 
 export default () => {
   const [value, setValue] = React.useState(0);
+  const [prevValue, setPrevValue] = React.useState(-1);
   const handleChange = (event, newValue) => {
+    setPrevValue(value);
     setValue(newValue);
   };
-  return <ModelContainer value={value} handleChange={handleChange} />;
+  return (
+    <ModelContainer
+      value={value}
+      handleChange={handleChange}
+      prevValue={prevValue}
+    />
+  );
 };
 
-const ModelContainer = ({ value, handleChange }) => {
+const ModelContainer = ({ value, handleChange, prevValue }) => {
   const [totalRecords, setTotalRecords] = React.useState(0);
   return (
     <Box sx={{ height: "100%" }}>
@@ -55,21 +63,24 @@ const ModelContainer = ({ value, handleChange }) => {
       </Box>
       <Search gutter={true} alignRight={true} />
       <TotalRecords margin="0 0 0 20px" value={totalRecords} />
-      <TabPanel value={value} index={0}>
+
+      <TabPanel prevValue={prevValue} value={value} index={0}>
         <DataTable
           rowsDataUrl={modelDataUrl}
           columns={modelDataColumns}
           setTotalRecords={setTotalRecords}
         />
       </TabPanel>
-      <TabPanel value={value} index={1}>
+
+      <TabPanel prevValue={prevValue} value={value} index={1}>
         <DataTable
           rowsDataUrl={modelDataUrl}
           columns={modelDataColumns}
           setTotalRecords={setTotalRecords}
         />
       </TabPanel>
-      <TabPanel value={value} index={2}>
+
+      <TabPanel prevValue={prevValue} value={value} index={2}>
         <DataTable
           rowsDataUrl={modelDataUrl}
           columns={modelDataColumns}
@@ -81,24 +92,33 @@ const ModelContainer = ({ value, handleChange }) => {
 };
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, prevValue, ...other } = props;
 
   return (
     <CSSTransition
       in={value === index}
-      timeout={500}
-      classNames="tab"
+      timeout={800}
+      // classNames="tab"
+      classNames={{
+        // enter: "tab-enter",
+        enter: `${prevValue > index ? "tab-enter-reverse" : "tab-enter"}`,
+        enterActive: "tab-enter-active",
+        exit: "tab-exit",
+        // exitActive: "tab-exit-active",
+        exitActive: `${
+          value > index ? "tab-exit-active" : "tab-exit-active-reverse"
+        }`,
+      }}
       mountOnEnter
       unmountOnExit
     >
       <div
         role="tabpanel"
-        hidden={value !== index}
         id={`simple-tabpanel-${index}`}
         aria-labelledby={`simple-tab-${index}`}
         {...other}
       >
-        {value === index && <Box sx={{ p: 2 }}>{children}</Box>}
+        <Box sx={{ p: 2 }}>{children}</Box>
       </div>
     </CSSTransition>
   );
