@@ -14,13 +14,13 @@ const modelDataUrl =
   "https://run.mocky.io/v3/666c1f2e-a4f9-43b9-b1a1-b1d643e766c1";
 
 const modelDataColumns = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "name", headerName: "Name", width: 800 },
-  { field: "active", headerName: "Active", width: 130 },
+  { field: "id", headerName: "ID", flex: 1 },
+  { field: "name", headerName: "Name", flex: 1 },
+  { field: "active", headerName: "Active", flex: 1 },
   {
     field: "noa",
     headerName: "Number of Accounts",
-    width: 180,
+    flex: 1,
   },
 ];
 
@@ -29,11 +29,7 @@ export default () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  return (
-    <React.Suspense fallback={<Loading />}>
-      <ModelContainer value={value} handleChange={handleChange} />
-    </React.Suspense>
-  );
+  return <ModelContainer value={value} handleChange={handleChange} />;
 };
 
 const ModelContainer = ({ value, handleChange }) => {

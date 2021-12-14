@@ -187,11 +187,11 @@ export default function SelectLabels() {
   );
 }
 
-export function BasicButtons({ buttons }) {
+export function BasicButtons({ buttons, variant }) {
   return (
     <Stack spacing={0} direction="row" className="buttonStack" sx={{ mr: 2 }}>
       {buttons.map((label, index) => (
-        <Button variant="text" key={label + " " + index}>
+        <Button variant={variant ?? "text"} key={label + " " + index} type="">
           {label}
         </Button>
       ))}

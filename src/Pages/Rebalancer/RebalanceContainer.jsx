@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import Rebalance from "../Components/Rebalance";
-import RebalancerContainer from "../Containers/RebalancerContainer";
+import Rebalance from "./Rebalance";
+import SpendCash from "./SpendCash";
+import RaiseCash from "./RaiseCash";
+import Analyzer from "./Analyzer";
 
-export default function Rebalancer() {
+export default function RebalanceContainer() {
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -28,16 +30,16 @@ export default function Rebalancer() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <RebalancerContainer subTab="Rebalance" />
+        <Rebalance />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <RebalancerContainer subTab="Spend Cash" />
+        <SpendCash />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <RebalancerContainer subTab="Raise Cash" />
+        <RaiseCash />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <RebalancerContainer subTab="Analyzer" />
+        <Analyzer />
       </TabPanel>
       <TabPanel value={value} index={4}>
         Proposed Table

@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Customers from "../Pages/Customers";
 import Models from "../Pages/Models";
-import Rebalancer from "../Pages/Rebalancer";
+import Rebalancer from "../Pages/Rebalancer/RebalanceContainer";
 
 const pages = ["Models", "Customers", "Rebalancer"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
