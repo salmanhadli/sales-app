@@ -64,30 +64,28 @@ export default function Analyzer() {
 
       <TotalRecords margin={"10px"} value={totalRecords} />
 
-      <>
-        <DataTable
-          rowsDataUrl={""}
-          columns={analyzerAccountsColumns}
-          setTotalRecords={setTotalRecords}
-          noCheckBox={true}
-        />
-        <Typography
-          variant="h3"
-          component="div"
-          sx={{
-            fontSize: "18px",
-            fontWeight: "600",
-            margin: "30px 20px 0 20px",
-          }}
-        >
-          Securities
-        </Typography>
-        <DataTable
-          rowsDataUrl={""}
-          columns={analyzerSecuritiesColumns}
-          setTotalRecords={setTotalRecords}
-        />
-      </>
+      <DataTable
+        rowsDataUrl={""}
+        columns={analyzerAccountsColumns}
+        setTotalRecords={setTotalRecords}
+        noCheckBox={true}
+      />
+      <Typography
+        variant="h3"
+        component="div"
+        sx={{
+          fontSize: "18px",
+          fontWeight: "600",
+          margin: "30px 20px 0 20px",
+        }}
+      >
+        Securities
+      </Typography>
+      <DataTable
+        rowsDataUrl={""}
+        columns={analyzerSecuritiesColumns}
+        setTotalRecords={setTotalRecords}
+      />
     </div>
   );
 }

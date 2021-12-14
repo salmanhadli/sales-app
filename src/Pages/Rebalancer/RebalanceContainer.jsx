@@ -7,6 +7,7 @@ import Rebalance from "./Rebalance";
 import SpendCash from "./SpendCash";
 import RaiseCash from "./RaiseCash";
 import Analyzer from "./Analyzer";
+import ProposedTrade from "./ProposedTrade";
 
 export default function RebalanceContainer() {
   const [value, setValue] = React.useState(0);
@@ -25,7 +26,7 @@ export default function RebalanceContainer() {
           <Tab label="Spend Cash" {...a11yProps(1)} />
           <Tab label="Raise Cash" {...a11yProps(2)} />
           <Tab label="Analyzer" {...a11yProps(3)} />
-          <Tab label="Proposed Table" {...a11yProps(4)} />
+          <Tab label="Proposed Trade" {...a11yProps(4)} />
           <div style={{ flex: "1" }}></div>
         </Tabs>
       </Box>
@@ -42,7 +43,7 @@ export default function RebalanceContainer() {
         <Analyzer />
       </TabPanel>
       <TabPanel value={value} index={4}>
-        Proposed Table
+        <ProposedTrade />
       </TabPanel>
     </Box>
   );

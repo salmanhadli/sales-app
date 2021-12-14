@@ -34,9 +34,11 @@ export default function DataTable({
     <DataGrid
       rows={rows}
       // rowHeight={120}
+      //  headerHeight={72}
       autoHeight={true}
       columns={columns}
       pageSize={5}
+      // hideFooter
       rowsPerPageOptions={[5]}
       // checkboxSelection={noCheckBox === true ? false : true}
       checkboxSelection={!!!noCheckBox}
