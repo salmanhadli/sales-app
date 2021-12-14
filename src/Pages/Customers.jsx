@@ -1,15 +1,3 @@
-// import React from 'react'
-
-// function Customers() {
-//   return (
-//     <div>
-
-//     </div>
-//   )
-// }
-
-// export default Customers
-
 import * as React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -28,6 +16,8 @@ import CreateIcon from "@mui/icons-material/Create";
 import PieChartIcon from "@mui/icons-material/PieChart";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import DataTable from "../Components/DataTable";
+import { customerColumns } from "../Util/dataTableColumns";
+import { customersDataUrl } from "../Util/URLs";
 
 const customersType = [
   "All Customers",
@@ -50,33 +40,7 @@ const LIST_VIEW_CONTROLS = [
 
 const buttonStack = ["New", "Import", "Send List Email", "Printable View"];
 
-const customersDataUrl =
-  "https://run.mocky.io/v3/a0cb7edf-2589-4dce-a72e-1e4aa92e956f";
-
-const customerColumns = [
-  {
-    field: "id",
-    headerName: "ID",
-    width: 70,
-  },
-  {
-    field: "Name",
-    headerName: "Name",
-    width: 400,
-  },
-  {
-    field: "Phone",
-    headerName: "Phone",
-    width: 200,
-  },
-  {
-    field: "Email",
-    headerName: "Email",
-    width: 400,
-  },
-];
-
-export default function SelectLabels() {
+export default function Customers() {
   const [type, setType] = React.useState(
     customersType.indexOf("Recently viewed (Pinned)")
   );

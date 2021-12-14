@@ -6,6 +6,10 @@ import TotalRecords from "../../Components/TotalRecords";
 import DataTable from "../../Components/DataTable";
 import BusinessIcon from "@mui/icons-material/Business";
 import { BasicButtons } from "../../Pages/Customers";
+import {
+  analyzerAccountsColumns,
+  analyzerSecuritiesColumns,
+} from "../../Util/dataTableColumns";
 
 export default function Analyzer() {
   const [totalRecords, setTotalRecords] = React.useState("0");
@@ -89,80 +93,3 @@ export default function Analyzer() {
     </div>
   );
 }
-
-const analyzerAccountsColumns = [
-  {
-    field: "account name",
-    headerName: "ACCOUNT NAME",
-    flex: 1,
-  },
-  {
-    field: "account value",
-    headerName: "ACCOUNT VALUE",
-    flex: 1,
-  },
-  {
-    field: "model name",
-    headerName: "MODEL NAME",
-    flex: 1,
-  },
-];
-
-const analyzerSecuritiesColumns = [
-  {
-    field: "name",
-    headerName: "NAME",
-    flex: 1,
-  },
-  {
-    field: "target percentage",
-    headerName: "TARGET %",
-    flex: 1,
-  },
-  {
-    field: "lt percentage",
-    headerName: "LT %",
-    flex: 1,
-  },
-
-  {
-    field: "ut percentage",
-    headerName: "UT %",
-    flex: 1,
-  },
-  {
-    field: "target amount",
-    headerName: "TARGET $",
-    flex: 1,
-  },
-  {
-    field: "current percentage",
-    headerName: "CURRENT %",
-    flex: 1,
-  },
-  {
-    field: "current amount",
-    headerName: "CURRENT $",
-    flex: 1,
-  },
-  {
-    field: "out",
-    headerName: "OUT",
-    flex: 1,
-  },
-  {
-    field: "post trade percentage",
-    headerName: "POST TRADE %",
-    flex: 1,
-  },
-  {
-    field: "post trade amount",
-    headerName: "POST TRADE $",
-    flex: 1,
-  },
-  {
-    field: "out final",
-    headerName: "OUT",
-    flex: 1,
-  },
-];

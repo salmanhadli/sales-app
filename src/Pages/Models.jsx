@@ -10,20 +10,8 @@ import TotalRecords from "../Components/TotalRecords";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import "./Models.css";
 import { CSSTransition } from "react-transition-group";
-
-const modelDataUrl =
-  "https://run.mocky.io/v3/666c1f2e-a4f9-43b9-b1a1-b1d643e766c1";
-
-const modelDataColumns = [
-  { field: "id", headerName: "ID", flex: 1 },
-  { field: "name", headerName: "Name", flex: 1 },
-  { field: "active", headerName: "Active", flex: 1 },
-  {
-    field: "noa",
-    headerName: "Number of Accounts",
-    flex: 1,
-  },
-];
+import { modelDataColumns } from "../Util/dataTableColumns";
+import { modelDataUrl } from "../Util/URLs";
 
 export default () => {
   const [value, setValue] = React.useState(0);

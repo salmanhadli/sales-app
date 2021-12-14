@@ -5,6 +5,7 @@ import { Typography } from "@mui/material";
 import TotalRecords from "../../Components/TotalRecords";
 import DataTable from "../../Components/DataTable";
 import BusinessIcon from "@mui/icons-material/Business";
+import { spendCashColumns } from "../../Util/dataTableColumns";
 
 export default function SpendCash() {
   const [totalRecords, setTotalRecords] = React.useState("0");
@@ -68,18 +69,3 @@ export default function SpendCash() {
     </div>
   );
 }
-
-const spendCashColumns = [
-  { field: "account name", headerName: "ACCOUNT NAME", flex: 0.8 },
-  { field: "account number", headerName: "ACCOUNT NUMBER", flex: 1 },
-  { field: "model", headerName: "MODEL", flex: 0.5 },
-  { field: "total current cash", headerName: "TOTAL CURRENT CASH $", flex: 1 },
-  {
-    field: "total available cash",
-    headerName: "TOTAL AVAILABLE CASH $",
-    flex: 1,
-  },
-  { field: "current value", headerName: "CURRENT VALUE $", flex: 1 },
-  { field: "invested amount", headerName: "INVESTED AMOUNT $", flex: 1 },
-  { field: "amount to be spent", headerName: "AMOUNT TO BE SPENT", flex: 1 },
-];

@@ -8,6 +8,10 @@ import { Typography } from "@mui/material";
 import TotalRecords from "../../Components/TotalRecords";
 import DataTable from "../../Components/DataTable";
 import BusinessIcon from "@mui/icons-material/Business";
+import {
+  rebalanceAccountColumns,
+  rebalanceModelColumns,
+} from "../../Util/dataTableColumns";
 
 const RebalanceOptions = ["Account", "Model"];
 
@@ -99,54 +103,3 @@ export default function Rebalance() {
     </div>
   );
 }
-
-const rebalanceAccountColumns = [
-  {
-    field: "name",
-    headerName: "Name",
-    width: 200,
-  },
-  {
-    field: "model",
-    headerName: "Model",
-    width: 200,
-  },
-  {
-    field: "cash",
-    headerName: "Cash $",
-    width: 180,
-  },
-  {
-    field: "total current cash",
-    headerName: "Total Current Cash $",
-    width: 200,
-  },
-  {
-    field: "total available cash",
-    headerName: "Total Available Cash $",
-    width: 200,
-  },
-  {
-    field: "last rebalanced on",
-    headerName: "Last Rebalanced On",
-    width: 200,
-  },
-];
-
-const rebalanceModelColumns = [
-  {
-    field: "name",
-    headerName: "Name",
-    flex: 1,
-  },
-  {
-    field: "active",
-    headerName: "Active",
-    flex: 1,
-  },
-  {
-    field: "count Accounts",
-    headerName: "Count Accounts",
-    flex: 1,
-  },
-];

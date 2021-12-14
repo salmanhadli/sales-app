@@ -5,6 +5,7 @@ import { Typography } from "@mui/material";
 import TotalRecords from "../../Components/TotalRecords";
 import DataTable from "../../Components/DataTable";
 import BusinessIcon from "@mui/icons-material/Business";
+import { raiseCashColumns } from "../../Util/dataTableColumns";
 
 export default function RaiseCash() {
   const [totalRecords, setTotalRecords] = React.useState("0");
@@ -69,17 +70,3 @@ export default function RaiseCash() {
     </div>
   );
 }
-
-const raiseCashColumns = [
-  { field: "account name", headerName: "ACCOUNT NAME", flex: 0.8 },
-  { field: "account number", headerName: "ACCOUNT NUMBER", flex: 1 },
-  { field: "model", headerName: "MODEL", flex: 0.5 },
-  { field: "total current cash", headerName: "TOTAL CURRENT CASH $", flex: 1 },
-  {
-    field: "total available cash",
-    headerName: "TOTAL AVAILABLE CASH $",
-    flex: 1,
-  },
-  { field: "current value", headerName: "CURRENT VALUE $", flex: 1 },
-  { field: "amount to be raised", headerName: "AMOUNT TO BE RAISED", flex: 1 },
-];
