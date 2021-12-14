@@ -11,6 +11,7 @@ export default function Content({ children }) {
           backgroundColor: "white",
           borderRadius: "8px",
           minHeight: "83vh",
+          overflowX: "hidden",
         }}
       >
         {children}
