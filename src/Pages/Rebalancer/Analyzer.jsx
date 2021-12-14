@@ -1,7 +1,6 @@
 import * as React from "react";
 import Search from "../../Components/Search";
 import SelectInputs from "../../Components/SelectInputs";
-import "../../Components/Rebalance.css";
 import { Typography } from "@mui/material";
 import TotalRecords from "../../Components/TotalRecords";
 import DataTable from "../../Components/DataTable";

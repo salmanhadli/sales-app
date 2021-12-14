@@ -31,32 +31,30 @@ export default function DataTable({
   }, [rowsDataUrl]);
 
   return (
-    <div style={{ width: "100%", margin: "10px auto" }}>
-      <DataGrid
-        rows={rows}
-        // rowHeight={120}
-        autoHeight={true}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        // checkboxSelection={noCheckBox === true ? false : true}
-        checkboxSelection={!!!noCheckBox}
-        loading={loading}
-        // components={{
-        //   NoRowsOverlay: () => (
-        //     <Stack
-        //       sx={{
-        //         height: "100%",
-        //         display: "flex",
-        //         justifyContent: "center",
-        //         alignItems: "center",
-        //       }}
-        //     >
-        //       No rows in DataGrid
-        //     </Stack>
-        //   ),
-        // }}
-      />
-    </div>
+    <DataGrid
+      rows={rows}
+      // rowHeight={120}
+      autoHeight={true}
+      columns={columns}
+      pageSize={5}
+      rowsPerPageOptions={[5]}
+      // checkboxSelection={noCheckBox === true ? false : true}
+      checkboxSelection={!!!noCheckBox}
+      loading={loading}
+      // components={{
+      //   NoRowsOverlay: () => (
+      //     <Stack
+      //       sx={{
+      //         height: "100%",
+      //         display: "flex",
+      //         justifyContent: "center",
+      //         alignItems: "center",
+      //       }}
+      //     >
+      //       No rows in DataGrid
+      //     </Stack>
+      //   ),
+      // }}
+    />
   );
 }
