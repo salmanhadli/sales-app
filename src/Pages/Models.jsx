@@ -1,5 +1,4 @@
 import * as React from "react";
-import Loading from "../Components/Loading";
 import DataTable from "../Components/DataTable";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
@@ -9,6 +8,8 @@ import Menu from "../Components/Menu";
 import Search from "../Components/Search";
 import TotalRecords from "../Components/TotalRecords";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import "./Models.css";
+import { CSSTransition } from "react-transition-group";
 
 const modelDataUrl =
   "https://run.mocky.io/v3/666c1f2e-a4f9-43b9-b1a1-b1d643e766c1";
@@ -83,15 +84,23 @@ function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
+    <CSSTransition
+      in={value === index}
+      timeout={500}
+      classNames="tab"
+      mountOnEnter
+      unmountOnExit
     >
-      {value === index && <Box sx={{ p: 2 }}>{children}</Box>}
-    </div>
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && <Box sx={{ p: 2 }}>{children}</Box>}
+      </div>
+    </CSSTransition>
   );
 }
 

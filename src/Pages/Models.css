@@ -1,0 +1,20 @@
+.tab-enter {
+  opacity: 0.2;
+  transform: translateX(400px);
+}
+
+.tab-enter-active {
+  transition-delay: 200ms;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.tab-exit {
+  opacity: 1;
+}
+.tab-exit-active {
+  opacity: 0;
+  transform: translateX(-400px);
+  transition: opacity 200ms, transform 200ms;
+}
