@@ -8,10 +8,13 @@ import SpendCash from "./SpendCash";
 import RaiseCash from "./RaiseCash";
 import Analyzer from "./Analyzer";
 import ProposedTrade from "./ProposedTrade";
+import { CSSTransition } from "react-transition-group";
 
 export default function RebalanceContainer() {
   const [value, setValue] = React.useState(0);
+  const [prevValue, setPrevValue] = React.useState(-1);
   const handleChange = (event, newValue) => {
+    setPrevValue(value);
     setValue(newValue);
   };
   return (
@@ -30,19 +33,19 @@ export default function RebalanceContainer() {
           <div style={{ flex: "1" }}></div>
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value} index={0} prevValue={prevValue}>
         <Rebalance />
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={value} index={1} prevValue={prevValue}>
         <SpendCash />
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={value} index={2} prevValue={prevValue}>
         <RaiseCash />
       </TabPanel>
-      <TabPanel value={value} index={3}>
+      <TabPanel value={value} index={3} prevValue={prevValue}>
         <Analyzer />
       </TabPanel>
-      <TabPanel value={value} index={4}>
+      <TabPanel value={value} index={4} prevValue={prevValue}>
         <ProposedTrade />
       </TabPanel>
     </Box>
@@ -50,18 +53,33 @@ export default function RebalanceContainer() {
 }
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, prevValue, ...other } = props;
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
+    <CSSTransition
+      in={value === index}
+      timeout={800}
+      classNames={{
+        enter: `${prevValue > index ? "tab-enter-reverse" : "tab-enter"}`,
+        enterActive: "tab-enter-active",
+        exit: "tab-exit",
+        // exitActive: "tab-exit-active",
+        exitActive: `${
+          value > index ? "tab-exit-active" : "tab-exit-active-reverse"
+        }`,
+      }}
+      mountOnEnter
+      unmountOnExit
     >
-      {value === index && <Box sx={{ p: 2, pt: 0 }}>{children}</Box>}
-    </div>
+      <div
+        role="tabpanel"
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        <Box sx={{ p: 2 }}>{children}</Box>
+      </div>
+    </CSSTransition>
   );
 }
 

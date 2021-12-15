@@ -86,9 +86,7 @@ function TabPanel(props) {
     <CSSTransition
       in={value === index}
       timeout={800}
-      // classNames="tab"
       classNames={{
-        // enter: "tab-enter",
         enter: `${prevValue > index ? "tab-enter-reverse" : "tab-enter"}`,
         enterActive: "tab-enter-active",
         exit: "tab-exit",
