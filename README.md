@@ -1,4 +1,4 @@
-Live Site Here : https://sales-app-12192.web.app
+<a href="https://sales-app-12192.web.app" target="_blank" >Live Site Here</a>
 
 # Getting Started with Create React App
 
