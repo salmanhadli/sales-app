@@ -1,20 +1,20 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { getTableData } from "../Util/APIs";
-// import Stack from "@mui/material/Stack";
+// import { getTableData } from "../Util/APIs";
 
 export default function DataTable({
   rowsDataUrl,
   columns,
   setTotalRecords,
   noCheckBox,
+  getData,
 }) {
   const [rows, setRows] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const data = await getTableData(rowsDataUrl);
+      const data = await getData(rowsDataUrl);
       setRows(data);
       setTotalRecords(data.length);
       setLoading(false);

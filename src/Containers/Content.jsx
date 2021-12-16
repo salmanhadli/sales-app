@@ -1,9 +1,14 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Loading from "../Components/Loading";
 
-export default function Content({ children }) {
+const Models = React.lazy(() => import("../Pages/Models"));
+const Customers = React.lazy(() => import("../Pages/Customers"));
+const RebalanceContainer = React.lazy(() => import("../Pages/Rebalancer"));
+
+export default function Content() {
   return (
-    <div className="Content">
       <Box
         sx={{
           width: "95%",
@@ -14,8 +19,17 @@ export default function Content({ children }) {
           overflowX: "hidden",
         }}
       >
-        {children}
+        <React.Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path="/models" element={<Navigate replace to="/" />} />
+
+            <Route path="/" element={<Models />} />
+
+            <Route path="customers" exact element={<Customers />} />
+
+            <Route path="rebalancer" exact element={<RebalanceContainer />} />
+          </Routes>
+        </React.Suspense>
       </Box>
-    </div>
   );
 }

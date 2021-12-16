@@ -11,14 +11,12 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import Customers from "../Pages/Customers";
-import Models from "../Pages/Models";
-import Rebalancer from "../Pages/Rebalancer/RebalanceContainer";
+import { Link, NavLink } from "react-router-dom";
 
 const pages = ["Models", "Customers", "Rebalancer"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-const NavBar = ({ setPage }) => {
+const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -37,13 +35,6 @@ const NavBar = ({ setPage }) => {
     setAnchorElUser(null);
   };
 
-  const handleChange = (e) => {
-    console.log(e);
-    if (e === "Customers") setPage(<Customers />);
-    else if (e === "Models") setPage(<Models />);
-    else if (e === "Rebalancer") setPage(<Rebalancer />);
-  };
-
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -54,7 +45,9 @@ const NavBar = ({ setPage }) => {
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
-            LOGO
+            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+              LOGO
+            </Link>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -86,15 +79,16 @@ const NavBar = ({ setPage }) => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography
-                    textAlign="center"
-                    onClick={handleChange.bind(null, page)}
-                  >
-                    {page}
-                  </Typography>
-                </MenuItem>
+              {pages.map((page, index) => (
+                <NavLink
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to={`/${page.toLowerCase()}`}
+                  key={page + " " + index}
+                >
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                </NavLink>
               ))}
             </Menu>
           </Box>
@@ -113,14 +107,20 @@ const NavBar = ({ setPage }) => {
               display: { xs: "none", md: "flex" },
             }}
           >
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+            {pages.map((page, index) => (
+              <NavLink
+                style={{ textDecoration: "none", color: "inherit" }}
+                to={`/${page.toLowerCase()}`}
+                key={page + " " + index}
               >
-                <div onClick={handleChange.bind(null, page)}>{page}</div>
-              </Button>
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page}
+                </Button>
+              </NavLink>
             ))}
           </Box>
 

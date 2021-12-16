@@ -18,6 +18,7 @@ import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import DataTable from "../Components/DataTable";
 import { customerColumns } from "../Util/dataTableColumns";
 import { customersDataUrl } from "../Util/URLs";
+import { getTableData } from "../Util/APIs";
 
 const customersType = [
   "All Customers",
@@ -145,6 +146,7 @@ export default function Customers() {
           rowsDataUrl={customersDataUrl}
           columns={customerColumns}
           setTotalRecords={() => {}}
+          getData={getTableData}
         />
       </div>
     </div>

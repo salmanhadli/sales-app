@@ -12,6 +12,7 @@ import "./Models.css";
 import { CSSTransition } from "react-transition-group";
 import { modelDataColumns } from "../Util/dataTableColumns";
 import { modelDataUrl } from "../Util/URLs";
+import { getTableData } from "../Util/APIs";
 
 export default () => {
   const [value, setValue] = React.useState(0);
@@ -55,6 +56,7 @@ const ModelContainer = ({ value, handleChange, prevValue }) => {
       <TabPanel prevValue={prevValue} value={value} index={0}>
         <DataTable
           rowsDataUrl={modelDataUrl}
+          getData={getTableData}
           columns={modelDataColumns}
           setTotalRecords={setTotalRecords}
         />
@@ -63,6 +65,7 @@ const ModelContainer = ({ value, handleChange, prevValue }) => {
       <TabPanel prevValue={prevValue} value={value} index={1}>
         <DataTable
           rowsDataUrl={modelDataUrl}
+          getData={getTableData}
           columns={modelDataColumns}
           setTotalRecords={setTotalRecords}
         />
@@ -71,6 +74,7 @@ const ModelContainer = ({ value, handleChange, prevValue }) => {
       <TabPanel prevValue={prevValue} value={value} index={2}>
         <DataTable
           rowsDataUrl={modelDataUrl}
+          getData={getTableData}
           columns={modelDataColumns}
           setTotalRecords={setTotalRecords}
         />
