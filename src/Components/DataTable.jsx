@@ -1,43 +1,56 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import axios from "axios";
-import Loading from "./Loading";
+// import { getTableData } from "../Util/APIs";
 
-export default function DataTable({ rowsDataUrl, columns }) {
+export default function DataTable({
+  rowsDataUrl,
+  columns,
+  setTotalRecords,
+  noCheckBox,
+  getData,
+}) {
   const [rows, setRows] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    const getData = async () => {
-      axios.get(rowsDataUrl).then((res) => {
-        // console.log(res.data);
-        if (!res.data.data) {
-          setRows(res.data);
-        } else setRows(res.data.data);
-        setLoading(false);
-      });
+    const fetchData = async () => {
+      const data = await getData(rowsDataUrl);
+      setRows(data);
+      setTotalRecords(data.length);
+      setLoading(false);
     };
 
-    getData();
+    if (rowsDataUrl) {
+      fetchData();
+    } else setLoading(false);
   }, [rowsDataUrl]);
 
-  if (loading) {
-    return (
-      <div style={{ height: 450, width: "100%" }}>
-        <Loading />
-      </div>
-    );
-  }
-
   return (
-    <div style={{ height: 400, width: "100%" }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-      />
-    </div>
+    <DataGrid
+      rows={rows}
+      // rowHeight={120}
+      //  headerHeight={72}
+      autoHeight={true}
+      columns={columns}
+      pageSize={5}
+      // hideFooter
+      rowsPerPageOptions={[5]}
+      checkboxSelection={!!!noCheckBox}
+      loading={loading}
+      // components={{
+      //   NoRowsOverlay: () => (
+      //     <Stack
+      //       sx={{
+      //         height: "100%",
+      //         display: "flex",
+      //         justifyContent: "center",
+      //         alignItems: "center",
+      //       }}
+      //     >
+      //       No rows in DataGrid
+      //     </Stack>
+      //   ),
+      // }}
+    />
   );
 }

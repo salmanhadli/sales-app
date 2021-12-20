@@ -7,11 +7,11 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-export default (props) => {
-  const [gender, setGender] = useState("Account");
-  const genderChangeHandler = (e, value) => {
-    setGender(value);
-    console.log(value);
+export default ({ options, setOption }) => {
+  const [choice, setChoice] = useState(options[0]);
+  const choiceSelectHandler = (e, value) => {
+    setChoice(value);
+    setOption(value);
   };
 
   return (
@@ -19,18 +19,19 @@ export default (props) => {
       <FormControl component="fieldset" align="left">
         <RadioGroup
           row
-          aria-label="gender"
-          name="gender"
-          value={gender ?? ""}
-          onChange={genderChangeHandler}
-          color={props.color}
+          aria-label="choice"
+          name="choice"
+          value={choice ?? ""}
+          onChange={choiceSelectHandler}
         >
-          <FormControlLabel
-            value="Account"
-            control={<Radio />}
-            label="Account"
-          />
-          <FormControlLabel value="Model" control={<Radio />} label="Model" />
+          {options.map((option, index) => (
+            <FormControlLabel
+              value={option}
+              control={<Radio />}
+              label={option}
+              key={option + " " + index}
+            />
+          ))}
         </RadioGroup>
       </FormControl>
     </FormGroup>

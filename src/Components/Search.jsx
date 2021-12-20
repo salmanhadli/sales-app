@@ -42,23 +42,36 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default ({ gutter, alignRight }) => {
+export default ({ gutter, alignRight, iconLabel, textLabel }) => {
   return (
     <div
       style={{
         display: "flex",
         margin: `${gutter ? "20px 30px 0 auto" : "none"}`,
+        alignItems: "flex-start",
+        flexDirection: `${textLabel ? "column" : "row"}`,
       }}
     >
-      {alignRight && <div style={{ flex: "1" }}></div>}
-      <Search style={{ border: "#64b5f6 1px solid", maxWidth: "300px" }}>
+      {textLabel && <p style={{ margin: "4px 25px" }}>{textLabel}</p>}
+      <Search
+        style={{
+          border: "#64b5f6 1px solid",
+          maxWidth: "300px",
+          marginLeft: `${alignRight && "auto"}`,
+        }}
+      >
         <SearchIconWrapper>
-          <SearchIcon />
+          {iconLabel ? iconLabel : <SearchIcon />}
         </SearchIconWrapper>
         <StyledInputBase
           placeholder="Search…"
           inputProps={{ "aria-label": "search" }}
         />
+        {iconLabel && (
+          <SearchIconWrapper sx={{ right: "0%", top: "0%" }}>
+            <SearchIcon />
+          </SearchIconWrapper>
+        )}
       </Search>
     </div>
   );
