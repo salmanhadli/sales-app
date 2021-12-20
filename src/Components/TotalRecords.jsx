@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 
-export default () => {
+export default ({ margin, value }) => {
   return (
     <Typography
       variant="p"
@@ -10,10 +10,11 @@ export default () => {
         borderRadius: "50px",
         padding: "5px 10px",
         display: "inline-block",
-        marginLeft: "40px",
+        margin: `${margin ?? ""}`,
+        justifySelf: "flex-start",
       }}
     >
-      Total Records : 59
+      Total Records : {value}
     </Typography>
   );
 };

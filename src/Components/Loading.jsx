@@ -10,6 +10,8 @@ export default function Loading() {
         justifyContent: "center",
         alignItems: "center",
         height: "100%",
+        width: "100%",
+        backdropFilter: "blur(10px)",
       }}
     >
       <CircularProgress />

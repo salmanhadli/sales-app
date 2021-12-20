@@ -1,15 +1,3 @@
-// import React from 'react'
-
-// function Customers() {
-//   return (
-//     <div>
-
-//     </div>
-//   )
-// }
-
-// export default Customers
-
 import * as React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -28,6 +16,9 @@ import CreateIcon from "@mui/icons-material/Create";
 import PieChartIcon from "@mui/icons-material/PieChart";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import DataTable from "../Components/DataTable";
+import { customerColumns } from "../Util/dataTableColumns";
+import { customersDataUrl } from "../Util/URLs";
+import { getTableData } from "../Util/APIs";
 
 const customersType = [
   "All Customers",
@@ -50,33 +41,7 @@ const LIST_VIEW_CONTROLS = [
 
 const buttonStack = ["New", "Import", "Send List Email", "Printable View"];
 
-const customersDataUrl =
-  "https://run.mocky.io/v3/a0cb7edf-2589-4dce-a72e-1e4aa92e956f";
-
-const customerColumns = [
-  {
-    field: "id",
-    headerName: "ID",
-    width: 70,
-  },
-  {
-    field: "Name",
-    headerName: "Name",
-    width: 400,
-  },
-  {
-    field: "Phone",
-    headerName: "Phone",
-    width: 200,
-  },
-  {
-    field: "Email",
-    headerName: "Email",
-    width: 400,
-  },
-];
-
-export default function SelectLabels() {
+export default function Customers() {
   const [type, setType] = React.useState(
     customersType.indexOf("Recently viewed (Pinned)")
   );
@@ -123,7 +88,7 @@ export default function SelectLabels() {
             </FormControl>
           </div>
         </div>
-        <BasicButtons />
+        <BasicButtons buttons={buttonStack} />
       </div>
       <div
         style={{
@@ -176,18 +141,23 @@ export default function SelectLabels() {
           </Button>
         </Stack>
       </div>
-      <div style={{ padding: "24px" }}>
-        <DataTable rowsDataUrl={customersDataUrl} columns={customerColumns} />
+      <div style={{ padding: "20px" }}>
+        <DataTable
+          rowsDataUrl={customersDataUrl}
+          columns={customerColumns}
+          setTotalRecords={() => {}}
+          getData={getTableData}
+        />
       </div>
     </div>
   );
 }
 
-function BasicButtons() {
+export function BasicButtons({ buttons, variant }) {
   return (
     <Stack spacing={0} direction="row" className="buttonStack" sx={{ mr: 2 }}>
-      {buttonStack.map((label, index) => (
-        <Button variant="text" key={label + " " + index}>
+      {buttons.map((label, index) => (
+        <Button variant={variant ?? "text"} key={label + " " + index} type="">
           {label}
         </Button>
       ))}
